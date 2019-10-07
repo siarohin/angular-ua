@@ -8,6 +8,7 @@ import { ProductModel } from "../models/index";
 export class ProductService {
   private products: Array<ProductModel>;
 
+  // не нужен тут конструктор, можно сразу проинициализировать поле products
   constructor() {
     this.products = [
       { id: 1,

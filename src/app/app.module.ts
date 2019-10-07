@@ -12,7 +12,7 @@ import { FirstModule } from "./first/index";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FirstModule
+    FirstModule // этого пока не требовалось делать. FirstComponent - это такой себе тестовый компонент. Он нам больше не понадобится
   ],
   providers: [],
   bootstrap: [AppComponent]

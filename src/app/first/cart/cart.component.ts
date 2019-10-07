@@ -10,15 +10,15 @@ import { CartList } from "./models/index";
   styleUrls: ["./cart.component.scss"]
 })
 export class CartComponent implements OnInit {
-  private cartService: CartService;
+  // private cartService: CartService;
 
   /**
    * Cart list that contains name and price
    */
   public cartList$: Observable<Array<CartList>>;
 
-  constructor(cartService: CartService) {
-    this.cartService = cartService;
+  constructor(private cartService: CartService) {
+    // this.cartService = cartService;
   }
 
   /**
