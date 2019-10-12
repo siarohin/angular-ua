@@ -6,3 +6,9 @@
 6. Added new CartService and CartComponent and functionality for check isEmpty
 7. Lint checked
 8. Upd: added observable into CartComponent
+
+# Update
+
+1. Install prettier config
+2. Delete First module
+3. Change structure

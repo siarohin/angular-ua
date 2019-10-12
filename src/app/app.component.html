@@ -1,6 +1,17 @@
 <div>
   <h1>Angular demo shop</h1>
-  <app-first></app-first>
+  <h2>{{ name }}</h2>
+  <ul *ngFor="let category of categoryId">
+    <li *ngIf="category?.isVisible">{{ category?.name }}</li>
+  </ul>
+  <div>{{ description }}</div>
+
+  <div *ngIf="isAvailable">
+    {{ price }}
+    <app-product (buyClickEvent)="onBuyEvent($event)"></app-product>
+  </div>
+
+  <app-product-list></app-product-list>
 </div>
 
 <app-cart></app-cart>
