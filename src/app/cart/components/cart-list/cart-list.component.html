@@ -1,0 +1,25 @@
+<h2>Cart list</h2>
+
+<ng-container *ngIf="cartList$ | async as cartList">
+  <ul class="cart-list" *ngFor="let item of cartList">
+    <app-cart-item
+      [item]="item"
+      (removeItem)="onRemoveItem($event)"
+      (updateItem)="onUpdateItem($event)"
+    ></app-cart-item>
+  </ul>
+
+  <div class="cart-list-total" *ngIf="totalCounter$ | async as totalCounter; else emptyCart">
+    <h3 class="item-total">
+      Total: {{ totalCounter }}<span class="item-total__small">pcs</span>, {{ totalPay$ | async
+      }}<span class="item-total__small">$</span>
+    </h3>
+    <button class="item-btn" mat-stroked-button color="warn" (click)="onResetCart()">
+      Clear cart
+    </button>
+  </div>
+</ng-container>
+
+<ng-template #emptyCart>
+  Your cart is empty!
+</ng-template>

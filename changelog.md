@@ -1,3 +1,5 @@
+# Task 1
+
 1. Installed Angular CLI
 2. Created new progect shop
 3. Added FirstComponent
@@ -7,8 +9,24 @@
 7. Lint checked
 8. Upd: added observable into CartComponent
 
-# Update
+## Update
 
 1. Install prettier config
 2. Delete First module
 3. Change structure
+
+# Task 2
+
+1. Update Angular from 7 to 8
+2. Install Angular Materials
+3. Add CartModule, ProductsModule, SharedModule
+4. Modify ProductListComponent and ProductService
+5. Implement Cart logic
+6. Modify CartListComponent
+7. Add СartItemComponent
+8. Use ChangeDetectionStrategy.OnPush with @Input/@Output in ProductComponent, CartItemComponent
+9. Use ngOnInit, ngAfterViewInit, ngOnDestroy
+10. Use renderer2, @ViewChild
+11. Modify CartService to count total pay and number of items
+12. Add #appTitle into AppComponent
+13. Use Directive and change styles on mouseMove event

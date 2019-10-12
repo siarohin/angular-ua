@@ -1,0 +1,18 @@
+<li appHighlight highlight-schema="highlight" class="cart-item" *ngIf="item?.counter !== 0">
+  <p class="item-label">{{ item?.name }}</p>
+  <button class="btn flex-element decrement-btn" mat-stroked-button name="decrement">-1</button>
+  <button
+    class="btn flex-element increment-btn"
+    mat-stroked-button
+    name="increment"
+    [disabled]="item?.counter > 4"
+  >
+    +1
+  </button>
+  <div class="item-price flex-element">
+    {{ itemCounter }} x {{ item?.price }}$
+    <button class="btn flex-element remove-btn" mat-stroked-button color="warn" name="remove">
+      Remove
+    </button>
+  </div>
+</li>

@@ -1,65 +1,27 @@
-import { Component, OnInit } from "@angular/core";
-
-import { CategoryId } from "./core/index";
+import { Component, AfterViewInit, ViewChild, ElementRef, Renderer2 } from "@angular/core";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
 })
-export class AppComponent implements OnInit {
-  /**
-   * Product name
-   */
-  public name: string;
+export class AppComponent implements AfterViewInit {
+  private renderer: Renderer2;
 
-  /**
-   * Product description
-   */
-  public description: string;
+  @ViewChild("appTitle", { static: false })
+  private appTitle: ElementRef;
 
-  /**
-   * Product price
-   */
-  public price: number;
-
-  /**
-   * Product category
-   */
-  public category: any;
-
-  /**
-   * Is product available
-   */
-  public isAvailable: boolean;
-
-  /**
-   * Category that avaible for this product
-   */
-  public categoryId: Array<CategoryId>;
-
-  /**
-   * ngOnInit
-   */
-  public ngOnInit(): void {
-    this.name = "My Google Chromebook";
-    this.description =
-      "My Google Chromebook brings together all the expert advice and easy.";
-    this.price = 399.99;
-    this.category = "Computers";
-    this.isAvailable = true;
-    this.categoryId = [
-      { name: "Computers", isVisible: true },
-      { name: "Video Games", isVisible: true },
-      { name: "Toys", isVisible: true },
-      { name: "Electronic Devices", isVisible: false },
-    ];
+  constructor(renderer: Renderer2) {
+    this.renderer = renderer;
   }
 
   /**
-   * On buy event
+   * ngAfterViewInit
    */
-  public onBuyEvent(message): void {
-    console.log(message);
+  public ngAfterViewInit(): void {
+    const headingEl: HTMLHeadingElement = this.appTitle.nativeElement;
+    const title: string = this.renderer.createText("Angular demo shop");
+
+    this.renderer.appendChild(headingEl, title);
   }
 }

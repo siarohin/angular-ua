@@ -1,0 +1,21 @@
+:host {
+  ::ng-deep {
+    .mat-card-header-text,
+    .mat-card-actions {
+      margin-left: 0;
+    }
+
+    .mat-card-actions {
+      font-weight: bold;
+    }
+  }
+}
+
+.product-list {
+  margin: 0 0 1rem;
+
+  .product-list__small {
+    font-size: 0.8rem;
+    margin: 0 0.1rem;
+  }
+}

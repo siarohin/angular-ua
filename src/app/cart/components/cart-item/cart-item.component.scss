@@ -1,0 +1,61 @@
+:host {
+  ::ng-deep {
+    &.mat-button-wrapper {
+      pointer-events: none;
+    }
+
+    button {
+      min-width: auto;
+    }
+  }
+}
+
+.highlight {
+  background-color: rgba(0, 255, 102, 0.1);
+}
+
+.cart-item {
+  display: inline-grid;
+  grid-template:
+    "decrement item increment" 1fr
+    "price price price" 1fr / 1fr 10fr 1fr;
+  justify-items: center;
+  align-items: center;
+  box-shadow: 0 0.1rem 0.1rem rgba(51, 204, 102, 0.8);
+
+  .btn {
+    margin: 0 0.5rem;
+    height: 2rem;
+    width: 1rem;
+  }
+
+  .decrement-btn {
+    grid-area: decrement;
+  }
+
+  .increment-btn {
+    grid-area: increment;
+  }
+
+  .item-label {
+    grid-area: item;
+  }
+
+  .item-price {
+    grid-area: price;
+    font-weight: bold;
+    background: rgba(0, 255, 102, 0.1);
+    width: 100%;
+    height: 100%;
+
+    .remove-btn {
+      width: 5rem;
+    }
+  }
+
+  .flex-element {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
