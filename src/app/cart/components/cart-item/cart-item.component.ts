@@ -71,23 +71,17 @@ export class CartItemComponent {
     const isRemoveButton: boolean = label === ButtonLabel.Remove;
 
     if (isUpdateButton) {
-      this.onUpdateItem(this.item, label);
+      this.updateCartList(this.item, label);
     } else if (isRemoveButton) {
-      this.onRemoveItem(this.item);
+      this.removeFromCartList(this.item);
     }
   }
 
-  /**
-   * On remove item button click
-   */
-  private onRemoveItem(item: ProductModel): void {
+  private removeFromCartList(item: ProductModel): void {
     this.removeItem.emit(item);
   }
 
-  /**
-   * On update item button click
-   */
-  private onUpdateItem(item: ProductModel, label: string): void {
+  private updateCartList(item: ProductModel, label: string): void {
     let counter: number;
     if (label === ButtonLabel.Decrement) {
       // decrement count (on first init is undefined)
