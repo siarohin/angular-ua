@@ -1,7 +1,1 @@
-<h2>Best Sellers</h2>
-<ul *ngFor="let product of productList">
-  <li>id: {{product?.id}}</li>
-  <li>{{product?.name}}</li>
-  <li>{{product?.price}} $</li>
-  <button (click)="onUpdateCart(product)">Add to cart</button>
-</ul>
+<app-product [productList]="productList" (updateCart)="onUpdateCart($event)"></app-product>

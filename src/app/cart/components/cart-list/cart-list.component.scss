@@ -1,0 +1,26 @@
+.cart-list {
+  list-style: none;
+  padding: 0 0 1rem;
+  margin: 0;
+}
+
+.cart-list-total {
+  display: grid;
+  grid-template-areas: "price btn";
+  grid-template-columns: 9fr 3fr;
+  align-items: center;
+
+  .item-total {
+    grid-area: price;
+
+    .item-total__small {
+      font-size: 0.8rem;
+      margin: 0 0.1rem;
+    }
+  }
+
+  .item-btn {
+    grid-area: btn;
+    height: 2.5rem;
+  }
+}
