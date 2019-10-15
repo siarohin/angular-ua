@@ -13,7 +13,7 @@ import { ProductModel } from "../../../products/index";
   styleUrls: ["./cart-list.component.scss"],
 })
 export class CartListComponent implements OnInit {
-  private cartService: CartService;
+  // private cartService: CartService;
 
   /**
    * Observable of cart list
@@ -30,8 +30,8 @@ export class CartListComponent implements OnInit {
    */
   public totalCounter$: Observable<number>;
 
-  constructor(cartService: CartService) {
-    this.cartService = cartService;
+  constructor(private cartService: CartService) {
+    // this.cartService = cartService;
   }
 
   /**

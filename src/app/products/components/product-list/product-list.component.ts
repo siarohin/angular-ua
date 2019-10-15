@@ -13,8 +13,8 @@ import { ProductService } from "../../services/index";
   styleUrls: ["./product-list.component.scss"],
 })
 export class ProductListComponent implements OnInit, OnDestroy {
-  private cartService: CartService;
-  private productService: ProductService;
+  // private cartService: CartService;
+  // private productService: ProductService;
   private subscription: Subscription;
 
   /**
@@ -22,10 +22,13 @@ export class ProductListComponent implements OnInit, OnDestroy {
    */
   public productList: Array<ProductModel>;
 
-  constructor(cartService: CartService, productService: ProductService) {
-    this.cartService = cartService;
-    this.productService = productService;
-  }
+  // Так не принято писать
+  // constructor(cartService: CartService, productService: ProductService) {
+  //   this.cartService = cartService;
+  //   this.productService = productService;
+  // }
+
+  constructor(private cartService: CartService, private productService: ProductService) {}
 
   /**
    * ngOnInit
