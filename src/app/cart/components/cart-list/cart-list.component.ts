@@ -38,29 +38,29 @@ export class CartListComponent implements OnInit {
    * ngOnInit
    */
   public ngOnInit(): void {
-    this.cartList$ = this.cartService.cartListObs$;
-    this.totalPay$ = this.cartService.totalPayObs$;
-    this.totalCounter$ = this.cartService.totalCounterObs$;
+    this.cartList$ = this.cartService.cartProducts$;
+    this.totalPay$ = this.cartService.totalSum$;
+    this.totalCounter$ = this.cartService.totalQuantity$;
   }
 
   /**
    * Reset cart
    */
   public onResetCart(): void {
-    this.cartService.resetCartList();
+    this.cartService.removeAllProducts();
   }
 
   /**
    * Remove item from cart
    */
-  public onRemoveItem(item: ProductModel): void {
-    this.cartService.removeItem(item);
+  public onRemoveProduct(item: ProductModel): void {
+    this.cartService.removeProduct(item);
   }
 
   /**
    * Update item's count in cart
    */
-  public onUpdateItem(item: ProductModel): void {
-    this.cartService.updateCartList(item);
+  public onUpdateProduct(item: ProductModel): void {
+    this.cartService.updateCartData(item);
   }
 }

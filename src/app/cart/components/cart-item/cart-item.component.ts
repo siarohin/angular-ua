@@ -52,13 +52,13 @@ export class CartItemComponent {
    * Event emitter for on remove item button click
    */
   @Output()
-  public removeItem: EventEmitter<ProductModel> = new EventEmitter();
+  public removeProduct: EventEmitter<ProductModel> = new EventEmitter();
 
   /**
    * Event emitter for on update item button click
    */
   @Output()
-  public updateItem: EventEmitter<ProductModel> = new EventEmitter();
+  public updateProduct: EventEmitter<ProductModel> = new EventEmitter();
 
   /**
    * Host listener for click event
@@ -71,17 +71,17 @@ export class CartItemComponent {
     const isRemoveButton: boolean = label === ButtonLabel.Remove;
 
     if (isUpdateButton) {
-      this.updateCartList(this.item, label);
+      this.updateCartData(this.item, label);
     } else if (isRemoveButton) {
       this.removeFromCartList(this.item);
     }
   }
 
   private removeFromCartList(item: ProductModel): void {
-    this.removeItem.emit(item);
+    this.removeProduct.emit(item);
   }
 
-  private updateCartList(item: ProductModel, label: string): void {
+  private updateCartData(item: ProductModel, label: string): void {
     let counter: number;
     if (label === ButtonLabel.Decrement) {
       // decrement count (on first init is undefined)
@@ -92,6 +92,6 @@ export class CartItemComponent {
     }
 
     const newItem: ProductModel = assign({}, item, { counter });
-    this.updateItem.emit(newItem);
+    this.updateProduct.emit(newItem);
   }
 }

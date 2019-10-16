@@ -1,4 +1,11 @@
-<li appHighlight highlight-schema="highlight" class="cart-item" *ngIf="item?.counter !== 0">
+<li
+  appHighlight
+  counter=""
+  touch-schema="touch"
+  highlight-schema="highlight"
+  class="cart-item"
+  *ngIf="item?.counter !== 0"
+>
   <p class="item-label">{{ item?.name }}</p>
   <button class="btn flex-element decrement-btn" mat-stroked-button name="decrement">-1</button>
   <button

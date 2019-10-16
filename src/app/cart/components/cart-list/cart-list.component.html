@@ -4,8 +4,8 @@
   <ul class="cart-list" *ngFor="let item of cartList">
     <app-cart-item
       [item]="item"
-      (removeItem)="onRemoveItem($event)"
-      (updateItem)="onUpdateItem($event)"
+      (removeProduct)="onRemoveProduct($event)"
+      (updateProduct)="onUpdateProduct($event)"
     ></app-cart-item>
   </ul>
 

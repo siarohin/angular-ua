@@ -32,7 +32,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
    */
   public ngOnInit(): void {
     this.productList = this.productService.getProducts();
-    this.subscription = this.cartService.cartListObs$.subscribe(cartList => {
+    this.subscription = this.cartService.cartProducts$.subscribe(cartList => {
       this.productList = this.productList.map(product =>
         this.disableProductInCartList(product, cartList),
       );
@@ -50,7 +50,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
    * Add item to cart
    */
   public onUpdateCart(item: ProductModel): void {
-    this.cartService.updateCartList(item);
+    this.cartService.updateCartData(item);
   }
 
   /**

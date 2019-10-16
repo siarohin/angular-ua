@@ -14,30 +14,30 @@ export class CartService {
   /**
    * Observable of cart list
    */
-  public cartListObs$: Observable<Array<ProductModel>>;
+  public cartProducts$: Observable<Array<ProductModel>>;
 
   /**
    * Observable of total pay
    */
-  public totalPayObs$: Observable<number>;
+  public totalSum$: Observable<number>;
 
   /**
    * Observable of total count
    */
-  public totalCounterObs$: Observable<number>;
+  public totalQuantity$: Observable<number>;
 
   constructor() {
     this.cartList = [];
-    this.cartListObs$ = this.cartListSubj.asObservable().pipe(
+    this.cartProducts$ = this.cartListSubj.asObservable().pipe(
       publishReplay(1),
       refCount(),
     );
-    this.totalPayObs$ = this.cartListObs$.pipe(
+    this.totalSum$ = this.cartProducts$.pipe(
       switchMap(cartList => this.getTotalPay(cartList)),
       publishReplay(1),
       refCount(),
     );
-    this.totalCounterObs$ = this.cartListObs$.pipe(
+    this.totalQuantity$ = this.cartProducts$.pipe(
       switchMap(cartList => this.getTotalCounter(cartList)),
       publishReplay(1),
       refCount(),
@@ -47,12 +47,13 @@ export class CartService {
   /**
    * Update cart list
    */
-  public updateCartList(item: ProductModel): void {
+  public updateCartData(item: ProductModel): void {
     if (isEmpty(this.cartList)) {
       this.cartList = [item];
     } else {
       const itemIndex: number = this.cartList.findIndex(product => product.id === item.id);
-      this.cartList = itemIndex > -1 ? this.updateItem(item, itemIndex) : [...this.cartList, item];
+      this.cartList =
+        itemIndex > -1 ? this.updateProduct(item, itemIndex) : [...this.cartList, item];
     }
 
     this.cartListSubj.next(this.cartList);
@@ -61,7 +62,7 @@ export class CartService {
   /**
    * Reset all items from cart list
    */
-  public resetCartList(): void {
+  public removeAllProducts(): void {
     this.cartList = [];
     this.cartListSubj.next(this.cartList);
   }
@@ -69,7 +70,7 @@ export class CartService {
   /**
    * Remove item from cart
    */
-  public removeItem(item: ProductModel): void {
+  public removeProduct(item: ProductModel): void {
     this.cartList = this.cartList.filter(items => items.id !== item.id);
     this.cartListSubj.next(this.cartList);
   }
@@ -77,7 +78,7 @@ export class CartService {
   /**
    * Return cart list with updated item
    */
-  private updateItem(item: ProductModel, itemIndex: number): Array<ProductModel> {
+  private updateProduct(item: ProductModel, itemIndex: number): Array<ProductModel> {
     let newCartList: Array<ProductModel> = [...this.cartList];
     if (item.counter > 0) {
       newCartList[itemIndex] = item;

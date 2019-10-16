@@ -30,3 +30,10 @@
 11. Modify CartService to count total pay and number of items
 12. Add #appTitle into AppComponent
 13. Use Directive and change styles on mouseMove event
+
+# Task 3
+
+1. Refactor CartService
+2. Add LocalStorageService, ConfigOptionsService, ConstantsService, GeneratorService
+3. Create AboutComponent and add services using @Optional()
+4. Modify highlight directive
