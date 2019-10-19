@@ -8,12 +8,9 @@
 6. Added new CartService and CartComponent and functionality for check isEmpty
 7. Lint checked
 8. Upd: added observable into CartComponent
-
-## Update
-
-1. Install prettier config
-2. Delete First module
-3. Change structure
+9. Install prettier config
+10. Delete First module
+11. Change structure
 
 # Task 2
 
@@ -37,3 +34,14 @@
 2. Add LocalStorageService, ConfigOptionsService, ConstantsService, GeneratorService
 3. Create AboutComponent and add services using @Optional()
 4. Modify highlight directive
+
+# Task 4
+
+1. Add ru-BY local into shared module, add currency pipe
+2. Transform names using uppercase pipe
+3. Create orderBy pipe, register into shared module
+4. Add orderBy pipe into product.component.htm, cart-list.component.html
+5. Add mat-form-field into cart-list.component.html
+6. Add keyvalue into cart-list.component.html
+7. Create reserved-names-filter pipe into shared, add into cart-list.component.html
+8. Create map-by-name, capitalize-first-letter pipes into shared, add into cart-list.component.html
