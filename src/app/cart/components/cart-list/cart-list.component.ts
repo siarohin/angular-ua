@@ -16,6 +16,11 @@ export class CartListComponent implements OnInit {
   private cartService: CartService;
 
   /**
+   * Selected value
+   */
+  public selectedValue = "name";
+
+  /**
    * Observable of cart list
    */
   public cartList$: Observable<Array<ProductModel>>;
@@ -62,5 +67,12 @@ export class CartListComponent implements OnInit {
    */
   public onUpdateProduct(item: ProductModel): void {
     this.cartService.updateCartData(item);
+  }
+
+  /**
+   * Change selected value by the user on selectionChange event
+   */
+  public onSelectionChange(value: string): void {
+    this.selectedValue = value;
   }
 }
