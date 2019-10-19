@@ -1,14 +1,14 @@
 <h2>Product list</h2>
 
-<mat-card class="product-list" *ngFor="let product of productList">
+<mat-card *ngFor="let product of productList | orderBy: 'name'" class="product-list">
   <mat-card-header>
-    <mat-card-title>{{ product?.name }}</mat-card-title>
+    <mat-card-title>{{ product?.name | uppercase }}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     {{ product?.description }}
   </mat-card-content>
   <mat-card-actions
-    >{{ product?.price }}<span class="product-list__small">$</span>
+    >{{ product?.price | currency: "BYN":"code":undefined:"ru-BY" }}
     <button
       mat-stroked-button
       color="primary"
