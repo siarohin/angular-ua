@@ -12,3 +12,4 @@ export class CapitalizeFirstLetterPipe implements PipeTransform {
     return shouldCapitalize ? `${value[0].toUpperCase()}${value.substr(1).toLowerCase()}` : value;
   }
 }
+// А чем не устроил titlecase?

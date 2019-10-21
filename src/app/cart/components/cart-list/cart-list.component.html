@@ -3,6 +3,10 @@
   <ng-container *ngIf="cartList$ | async as cartList">
     <mat-form-field>
       <mat-label>Sort by</mat-label>
+      <!-- Вероятно всего ошибка из-за использования  selectionChange + (ngModel)
+      так как ngModel также генерит аутпут.  В документации к єтому компоненту идет
+      свойство [(value)]
+    -->
       <mat-select
         [disabled]="cartList.length < 2 ? true : false"
         (selectionChange)="onSelectionChange(selectedValue)"
