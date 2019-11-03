@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, Output, EventEmitter, Input } from "@angular/core";
+import { Router } from "@angular/router";
 
 import { ProductModel } from "../../models/index";
 
@@ -16,7 +17,7 @@ export class ProductComponent {
    * Product's list input
    */
   @Input()
-  public productList: Array<ProductModel>;
+  public product: ProductModel;
 
   /**
    * Event emitter for on update cart button click
@@ -24,10 +25,21 @@ export class ProductComponent {
   @Output()
   public updateCart: EventEmitter<ProductModel> = new EventEmitter();
 
+  constructor(private router: Router) {}
+
   /**
    * On update cart button click
    */
-  public onUpdateCart(product: ProductModel): void {
-    this.updateCart.emit(product);
+  public onUpdateCart(): void {
+    this.updateCart.emit(this.product);
+    this.router.navigate(["/cart"]);
+  }
+
+  /**
+   * On product's title click
+   */
+  public onTitleClick(): void {
+    const { id } = this.product;
+    this.router.navigate(["/products", id]);
   }
 }

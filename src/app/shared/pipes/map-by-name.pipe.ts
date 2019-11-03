@@ -11,7 +11,6 @@ import { MAP_NAMES } from "../../core/index";
 })
 export class MapByNamePipe implements PipeTransform {
   transform(value: string): string {
-    console.log(value);
     const shoudChangeName: boolean = !isNil(MAP_NAMES[value]);
     return shoudChangeName ? MAP_NAMES[value] : value;
   }

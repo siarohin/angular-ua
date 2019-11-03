@@ -1,1 +1,5 @@
-<app-product [productList]="productList" (updateCart)="onUpdateCart($event)"></app-product>
+<h2>Product list</h2>
+
+<mat-card class="product-list" *ngFor="let product of productList | orderBy: 'name'">
+  <app-product [product]="product" (updateCart)="onUpdateCart($event)"></app-product>
+</mat-card>

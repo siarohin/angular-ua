@@ -1,7 +1,14 @@
 <div class="wrapper">
-  <h1 #appTitle class="title"></h1>
+  <div class="title">
+    <h1 #appTitle></h1>
+    <nav>
+      <a routerLink="/products" routerLinkActive="active">Products</a>
+      <a routerLink="/cart" routerLinkActive="active">Cart</a>
+      <!-- <a routerLink="/login" routerLinkActive="active">Login</a> -->
+    </nav>
+  </div>
 
-  <div class="content">
-    <router-outlet></router-outlet>
+  <div class="container">
+    <router-outlet #routerOutlet="outlet"></router-outlet>
   </div>
 </div>

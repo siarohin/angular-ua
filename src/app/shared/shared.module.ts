@@ -20,8 +20,7 @@ import {
 } from "./pipes/index";
 
 @NgModule({
-  declarations: [
-    HighlightDirective,
+  declarations: [    HighlightDirective,
     OrderByPipe,
     FilterByNamePipe,
     MapByNamePipe,
