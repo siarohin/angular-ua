@@ -6,7 +6,7 @@
   class="cart-item"
   *ngIf="item?.counter !== 0"
 >
-  <p class="item-label">{{ item?.name }}</p>
+  <p class="item-label">{{ item?.name | uppercase }}</p>
   <button class="btn flex-element decrement-btn" mat-stroked-button name="decrement">-1</button>
   <button
     class="btn flex-element increment-btn"
@@ -17,7 +17,7 @@
     +1
   </button>
   <div class="item-price flex-element">
-    {{ itemCounter }} x {{ item?.price }}$
+    {{ itemCounter }} x {{ item?.price | currency: "BYN":"code":undefined:"ru-BY" }}
     <button class="btn flex-element remove-btn" mat-stroked-button color="warn" name="remove">
       Remove
     </button>

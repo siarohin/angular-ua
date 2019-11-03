@@ -1,23 +1,37 @@
 <h2>Cart list</h2>
+<ng-container *ngIf="totalCounter$ | async as totalCounter; else emptyCart">
+  <ng-container *ngIf="cartList$ | async as cartList">
+    <mat-form-field>
+      <mat-label>Sort by</mat-label>
+      <mat-select
+        [disabled]="cartList.length < 2 ? true : false"
+        (selectionChange)="onSelectionChange(selectedValue)"
+        [(ngModel)]="selectedValue"
+      >
+        <mat-option *ngFor="let item of cartList[0] | filterByName | keyvalue" [value]="item.key">
+          {{ item.key | mapByName | capitalizeFirstLetter }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-<ng-container *ngIf="cartList$ | async as cartList">
-  <ul class="cart-list" *ngFor="let item of cartList">
-    <app-cart-item
-      [item]="item"
-      (removeProduct)="onRemoveProduct($event)"
-      (updateProduct)="onUpdateProduct($event)"
-    ></app-cart-item>
-  </ul>
+    <ul class="cart-list" *ngFor="let item of cartList | orderBy: selectedValue">
+      <app-cart-item
+        [item]="item"
+        (removeProduct)="onRemoveProduct($event)"
+        (updateProduct)="onUpdateProduct($event)"
+      ></app-cart-item>
+    </ul>
 
-  <div class="cart-list-total" *ngIf="totalCounter$ | async as totalCounter; else emptyCart">
-    <h3 class="item-total">
-      Total: {{ totalCounter }}<span class="item-total__small">pcs</span>, {{ totalPay$ | async
-      }}<span class="item-total__small">$</span>
-    </h3>
-    <button class="item-btn" mat-stroked-button color="warn" (click)="onResetCart()">
-      Clear cart
-    </button>
-  </div>
+    <div class="cart-list-total">
+      <h3 class="item-total">
+        Total: {{ totalCounter }}<span class="item-total__small">pcs</span>,
+        {{ totalPay$ | async | currency: "BYN":"code":undefined:"ru-BY" }}
+      </h3>
+      <button class="item-btn" mat-stroked-button color="warn" (click)="onResetCart()">
+        Clear cart
+      </button>
+    </div>
+  </ng-container>
 </ng-container>
 
 <ng-template #emptyCart>
