@@ -4,8 +4,8 @@
   height: 100%;
   display: grid;
   grid-template:
-    "title title" 1fr
-    "products cart" 11fr / 7fr 5fr;
+    "title" 1fr
+    "content" 11fr / auto;
 
   .title {
     grid-area: title;
@@ -14,13 +14,9 @@
     padding: 1rem;
   }
 
-  .product-list {
-    grid-area: products;
-    padding: 0 1rem;
-  }
-
-  .cart-list {
-    grid-area: cart;
-    padding: 0 1rem;
+  .content {
+    grid-area: content;
+    margin: 0;
+    padding: 1rem;
   }
 }
