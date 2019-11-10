@@ -31,12 +31,17 @@ export class ProductListComponent implements OnInit, OnDestroy {
    * ngOnInit
    */
   public ngOnInit(): void {
-    this.productList = this.productService.getProducts();
-    this.subscription = this.cartService.cartProducts$.subscribe(cartList => {
-      this.productList = this.productList.map(product =>
-        this.disableProductInCartList(product, cartList),
-      );
-    });
+    this.subscription = this.productService.products$.subscribe(
+      productList => (this.productList = productList),
+    );
+
+    this.subscription.add(
+      this.cartService.cartProducts$.subscribe(cartList => {
+        this.productList = this.productList.map(product =>
+          this.disableProductInCartList(product, cartList),
+        );
+      }),
+    );
   }
 
   /**

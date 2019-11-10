@@ -4,17 +4,43 @@
   height: 100%;
   display: grid;
   grid-template:
-    "title" 1fr
+    "title" 3rem
     "content" 11fr / auto;
 
   .title {
     grid-area: title;
-    background-color: #33cc66;
+    background-color: var(--pale-green);
     margin: 0;
-    padding: 1rem;
+    padding: 0 1rem;
+    display: inline-grid;
+    grid-template-areas: "title navigation";
+    grid-template-columns: 3fr 9fr;
+    align-items: center;
+
+    h1 {
+      grid-area: title;
+      font-size: 1rem;
+    }
+
+    nav {
+      grid-area: navigation;
+
+      a {
+        margin: 0 1rem;
+        padding: 1rem;
+        color: var(--pale-grey);
+        text-decoration: none;
+
+        &.active {
+          background: var(--pale-grey);
+          color: var(--pale-green);
+          border-bottom: 0.1rem solid var(--pale-dark-green);
+        }
+      }
+    }
   }
 
-  .content {
+  .container {
     grid-area: content;
     margin: 0;
     padding: 1rem;

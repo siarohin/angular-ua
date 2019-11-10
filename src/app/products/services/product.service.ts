@@ -1,5 +1,8 @@
 import { Injectable } from "@angular/core";
+import { BehaviorSubject, Observable } from "rxjs";
+
 import { ProductModel } from "../models/index";
+import { map, tap } from "rxjs/operators";
 
 /**
  * Default product's configuration
@@ -48,12 +51,52 @@ const DEFAULT_CONFIG: Array<ProductModel> = [
  */
 @Injectable()
 export class ProductService {
-  private products: Array<ProductModel> = DEFAULT_CONFIG;
+  private productsSubj: BehaviorSubject<Array<ProductModel>> = new BehaviorSubject(DEFAULT_CONFIG);
 
   /**
-   * Get product list
+   * Observable of array product's list
    */
-  public getProducts(): Array<ProductModel> {
-    return this.products;
+  public products$: Observable<Array<ProductModel>>;
+
+  constructor() {
+    this.products$ = this.productsSubj.asObservable();
+  }
+
+  /**
+   * Return Observable of product from list
+   */
+  public getProductFromList(id: number | string): Observable<ProductModel> {
+    return this.products$.pipe(
+      map((products: Array<ProductModel>) => {
+        return products.find(product => product.id === id);
+      }),
+    );
+  }
+
+  /**
+   * Add product to product's list
+   */
+  public addProductToList(value: ProductModel): void {
+    this.products$.pipe(
+      tap((products: Array<ProductModel>) => {
+        const newProductsList: Array<ProductModel> = [...products, value];
+        this.productsSubj.next(newProductsList);
+      }),
+    );
+  }
+
+  /**
+   * Update product in product's list
+   */
+  public updateProductInList(value: ProductModel): void {
+    this.products$.pipe(
+      tap((products: Array<ProductModel>) => {
+        const indexForUpdate: number = products.findIndex(product => product.id === value.id);
+        if (indexForUpdate > -1) {
+          const newProductsList: Array<ProductModel> = products.splice(indexForUpdate, 1, value);
+          this.productsSubj.next(newProductsList);
+        }
+      }),
+    );
   }
 }

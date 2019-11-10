@@ -15,6 +15,7 @@
 }
 
 .cart-item {
+  width: 100%;
   display: inline-grid;
   grid-template:
     "decrement item increment" 1fr

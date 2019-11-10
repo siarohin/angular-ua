@@ -8,9 +8,15 @@
     .mat-card-actions {
       font-weight: bold;
     }
+
+    .mat-card-title:hover {
+      cursor: pointer;
+      color: var(--pale-green);
+    }
   }
 }
 
-.product-list {
-  margin: 0 0 1rem;
+.currency {
+  font-size: 0.8rem;
+  margin: 0 0.1rem;
 }
