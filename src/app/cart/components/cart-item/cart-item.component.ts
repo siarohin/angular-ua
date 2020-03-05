@@ -5,6 +5,9 @@ import {
   EventEmitter,
   ChangeDetectionStrategy,
   HostListener,
+  ViewChild,
+  AfterViewInit,
+  ElementRef,
 } from "@angular/core";
 import assign from "lodash/assign";
 import isNil from "lodash/isNil";
@@ -18,9 +21,11 @@ import { ButtonLabel } from "../models/index";
   styleUrls: ["./cart-item.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CartItemComponent {
+export class CartItemComponent implements AfterViewInit {
   private itemBF: ProductModel;
   private itemCounterBF: number;
+
+  @ViewChild("increment", { static: false }) btn: ElementRef<any>;
 
   /**
    * Set cart list item
@@ -93,5 +98,14 @@ export class CartItemComponent {
 
     const newItem: ProductModel = assign({}, item, { counter });
     this.updateProduct.emit(newItem);
+  }
+
+  ngAfterViewInit() {
+    // все доступно
+    console.log(this.btn);
+    // но свойство скрыто, вероятно для того, чтобы не пытаться напрямую изменять DOM
+    console.log(this.btn._elementRef.nativeElement);
+    // а поповоду ::ng-deep, я так понимаю альтернатив пока нет
+    // https://angular.io/guide/component-styles#deprecated-deep--and-ng-deep
   }
 }
